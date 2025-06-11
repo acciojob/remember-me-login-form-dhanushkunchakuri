@@ -1,24 +1,28 @@
-//your JS code here. If required.
-let btn=document.getElementById("submit");
-btn.addEventListener('click',(e)=>{
-	e.preventDefault();
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
-	alert(`Logged in as ${user}`)
-	let check=document.getElementById("checkbox");
-	if(check.checked){
-		localStorage.setItem("username",user);
-		localStorage.setItem("password",pass);
-		
-		alert("credentials are stored in localStorage");
-		
+window.addEventListener('DOMContentLoaded',()=>{
+	const existingBtn = document.getElementById("existing");
+	if(localStorage.getItem("username") && localStorage.getItem("password")){
+		existingBtn.style.display = "inline-block";
 	}
-	else{
-		alert("credentials are not stored")
-	}
-  window.addEventListener('DOMContentLoaded', () => {
-  let existingBtn = document.getElementById("existing");
-  if (localStorage.getItem("username") && localStorage.getItem("password")) {
-    existingBtn.style.display = "inline-block";
+	existingBtn.addEventListener('click',()=>{
+		let username=localStorage.getItem("username");
+		alert(`Logged in as ${savedUser}`);
+	})
+});
+
+document.getElementById("submit").addEventListener('click',()=>{
+	e.preventDefault(); 
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const checkbox = document.getElementById("checkbox");
+
+  alert(`Logged in as ${username}`);
+
+  if (checkbox.checked) {
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+  } else {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
   }
-})
+});
