@@ -1,16 +1,17 @@
-window.addEventListener('DOMContentLoaded',()=>{
-	const existingBtn = document.getElementById("existing");
-	if(localStorage.getItem("username") && localStorage.getItem("password")){
-		existingBtn.style.display = "inline-block";
-	}
-	existingBtn.addEventListener('click',()=>{
-		let username=localStorage.getItem("username");
-		alert(`Logged in as ${savedUser}`);
-	})
+window.addEventListener('DOMContentLoaded', () => {
+  const existingBtn = document.getElementById("existing");
+  if (localStorage.getItem("username") && localStorage.getItem("password")) {
+    existingBtn.style.display = "inline-block";
+  }
+
+  existingBtn.addEventListener('click', () => {
+    let username = localStorage.getItem("username");
+    alert(`Logged in as ${username}`);
+  });
 });
 
-document.getElementById("submit").addEventListener('click',()=>{
-	e.preventDefault(); 
+document.getElementById("submit").addEventListener('click', (e) => {
+  e.preventDefault(); // Fix: use 'e' correctly
 
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
